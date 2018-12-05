@@ -20,6 +20,7 @@ def get_planets(request):
         results = []
         for planet in planets:
             planet_json = {}
+            planet_json['id'] = planet.id
             planet_json['label'] = planet.name
             planet_json['value'] = planet.name
             results.append(planet_json)
