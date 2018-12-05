@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block app %}
+{% block javascript %}
+<!-- Jquery for Autocomplete -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+{% endblock %}
+
 {% load static %}
+
     <!-- home
     ================================================== -->
     <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{% static 'images/background.jpg' %}" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
@@ -114,7 +122,9 @@
             </div>
         </div>
         <center>
-                <input type="search" name="search" placeholder="eg. Kepler-9D" class="searchbar" data-aos="fade-up">
+                <div class="ui-widget">
+                    <input type="search" name="search" placeholder="eg. Kepler-9D" class="searchbar" id="search" data-aos="fade-up">
+                </div>
                 <input type="submit" class="btn btn--primary" value="search" data-aos="fade-right">
         </center> <!-- end searchbar -->
     </section> <!-- end s-searchbar -->
@@ -219,5 +229,16 @@
         </div> <!-- end contact-content -->
 
     </section> <!-- end s-contact -->
+
+{% block inlinejs %}
+<script>
+    $(function() {
+        $("#search").autocomplete({
+            source: "/api/get_planets/",
+            minlength: 3,
+        });
+    });
+</script>
+{% endblock %}
 
 {% endblock %}
