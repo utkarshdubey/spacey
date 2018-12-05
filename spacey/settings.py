@@ -25,7 +25,7 @@ SECRET_KEY = '##50id27-3!li4zmd-0%no!+d1ljo!49azh6ld!68hb50-l%rw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'spaceyapp.herokuapp.com']
 
 
 # Application definition
