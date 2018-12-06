@@ -29,3 +29,8 @@ def get_planets(request):
         data = 'fail'
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
+
+def detail(request):
+    query = request.POST['planet_search']
+    planet = Planet.objects.filter(name__icontains=query)
+    return render(request, 'detail.html', {'planet': planet})

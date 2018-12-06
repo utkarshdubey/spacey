@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	{% for p in planet %}
+	<h1>{{ p.name }}</h1>
+	<span><b>{{ p.mass }}</b></span>
+	{% endfor %}
+</body>
+</html>

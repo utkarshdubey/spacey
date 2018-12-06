@@ -122,10 +122,13 @@
             </div>
         </div>
         <center>
-                <div class="ui-widget">
-                    <input type="search" name="search" placeholder="eg. Kepler-9D" class="searchbar" id="search" data-aos="fade-up">
-                </div>
-                <input type="submit" class="btn btn--primary" value="search" data-aos="fade-right">
+                <form action="{% url 'detail' %}" method="post">
+                    {% csrf_token %}
+                    <div class="ui-widget">
+                    <input type="search" name="planet_search" placeholder="eg. Kepler-9D" class="searchbar" id="search" data-aos="fade-up">
+                    </div>
+                    <input type="submit" class="btn btn--primary" value="search" data-aos="fade-right">
+                </form>
         </center> <!-- end searchbar -->
     </section> <!-- end s-searchbar -->
     <!-- add-planet
