@@ -76,7 +76,8 @@
         <div class="row about-desc" data-aos="fade-up">
             <div class="col-full">
                 <p>
-                An exoplanet is a planet outside the Sun's solar system. You will encounter a lot of them throughout this website. An exoplanet opens new possibilities to life on other planets.
+                Exoplanets are planets beyond our own solar system. Thousands have been discovered in the past two decades, mostly with NASA's Kepler Space Telescope. <br>
+                These worlds come in a huge variety of sizes and orbits. Some are gigantic planets hugging close to their parent stars; others are icy, some rocky. NASA and other agencies are looking for a special kind of planet: one that's the same size as Earth, orbiting a sun-like star in the habitable zone.
                 <br>
                 <a href="https://en.wikipedia.org/wiki/Exoplanet" target="_blank">
                     <button class="full-width btn"><i class="fa fa-wikipedia-w"></i> | More on Wikipedia</button>
@@ -125,7 +126,7 @@
                 <form action="{% url 'detail' %}" method="post">
                     {% csrf_token %}
                     <div class="ui-widget">
-                    <input type="search" name="planet_search" placeholder="eg. Kepler-9D" class="searchbar" id="search" data-aos="fade-up">
+                    <input type="search" name="planet_search" placeholder="eg. Kepler-9D" class="searchbar" id="search" data-aos="fade-up" required="required">
                     </div>
                     <input type="submit" class="btn btn--primary" value="search" data-aos="fade-right">
                 </form>
@@ -151,11 +152,14 @@
 
                 <h3 class="h6">Enter the details Below</h3>
 
-                <form name="planetForm" id="contactForm" method="post" action="" novalidate="novalidate">
+                <form name="planetForm" id="contactForm" method="post" action="{% url 'add-request' %}" novalidate="novalidate">
                     <fieldset>
     
                     <div class="form-field">
                         <input name="planetName" type="text" id="planetName" placeholder="Planet Name" value="" minlength="2" required="true" aria-required="true" class="full-width">
+                    </div>
+                     <div class="form-field">
+                        <input name="planetMass" type="text" id="planetMass" placeholder="Planet Mass" value="" minlength="2" required="true" aria-required="true" class="full-width">
                     </div>
                     <div class="form-field">
                         <input name="contactEmail" type="email" id="contactEmail" placeholder="Your Email" value="" required="" aria-required="true" class="full-width">

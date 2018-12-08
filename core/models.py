@@ -10,6 +10,7 @@ class Planet(models.Model):
 	discovery_year = models.TextField()
 	distance_from_sun = models.TextField()
 	status = models.TextField(max_length=150)
+	to_display = models.BooleanField(default=True)
 
 	def __str__(self):
 		return self.name

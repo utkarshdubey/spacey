@@ -19,7 +19,8 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', views.index, name="index"),
     path('api/get_planets/', views.get_planets, name="get_planets"),
-    path('detail/', views.detail, name="detail")
+    path('api/add-request/', views.add_request, name="add-request"),
+    path('detail/', views.detail, name="detail"),
 ]

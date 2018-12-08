@@ -1,13 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	{% for p in planet %}
-	<h1>{{ p.name }}</h1>
-	<span><b>{{ p.mass }}</b></span>
-	{% endfor %}
-</body>
-</html>
+{% extends 'base-detail.html' %}
+{% block app %}
+{% load static %}
+{% for p in planet %}
+<title>{{p.name}}</title>
+
+	 <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{% static 'images/background.jpg' %}" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+
+        <div class="overlay"></div>
+        <div class="shadow-overlay"></div>
+
+        <div class="home-content">
+
+            <div class="row home-content__main">
+				
+                <h3>{{p.mass}} Solar Mass {% if p.mass != "" %}, Discovered in {{p.discovery_year}} {% endif %}</h3>
+
+                <h1>
+                {{error}}
+                {{p.name}}
+                </h1>
+				<div class="row">
+					<div class="col-six tab-full">
+						<img src="https://source.unsplash.com/320x400/?universe, nebula" alt="">
+					</div>
+					<div class="col-six tab-full" style="background: white;">	
+						<div>
+							<h3 style="color: #000;">Last Year's Progress on Exoplanets</h3>
+							{{ line_chart.as_html }}
+						</div>
+						<hr>
+						<div>
+							<p>{{planetdesc | truncatewords:"30"}}</p>
+						</div>
+					</div>
+				</div>
+				<hr style="background-color: white;">
+				<h2 style="color: #fff;">Details</h2>
+				<div class="table-responsive">
+
+					  <table style="background-color: #fff; overflow: hidden;">
+                            <thead>
+                            <tr>
+                                <th>Mass</th>
+                                <th>Radius</th>
+                                <th>Period Days</th>
+                                <th>Surface Temperature</th>
+                                <th>Distance From Sun</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{p.mass}}</td>
+                                <td>{{p.radius}}</td>
+                                <td>{{p.period_days}}</td>
+                                <td>{{p.surface_temperature}}</td>
+                                <td>{{p.discovery_year}}</td>
+                                <td>{{p.status}}</td>
+                            </tr>
+                            </tbody>
+                    </table>
+
+				</div>
+                <div class="home-content__buttons">
+                    <a href="https://wikipedia.com" class="smoothscroll btn btn--stroke">
+                        More Info
+                    </a>
+                    <a href="{% url 'index' %}" class="smoothscroll btn btn--stroke">
+                        Go Back
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="home-content__scroll">
+                <a href="{% url 'index' %}#find" class="scroll-link smoothscroll">
+                    <span>Get back to Find</span>
+                </a>
+            </div>
+
+            <div class="home-content__line"></div>
+
+        </div> 
+
+
+       
+    </section> 
+{% endfor %}
+{% block js %}
+<!-- JS here -->
+<script>
+	
+</script>
+{% endblock %}
+{% endblock %}
