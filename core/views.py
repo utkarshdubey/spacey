@@ -11,6 +11,13 @@ from .exceptions import NotFound
 def index(request):
   return render(request, 'index.html')
 
+# Use this to load data.
+def load_planet(file_path):
+    reader = csv.DictReader(open(file_path))
+    for row in reader:
+        planet = Planet(name=row['name'], mass=row['mass'], radius=row['radius'], period_days=row['period_days'], surface_temperature=row['surface_temperature'], discovery_year=row['discovery_year'], distance_from_sun=row['distance_from_sun'], status=row['status'])
+        planet.save()
+
 def get_planets(request):
     if request.is_ajax():
         q = request.GET.get('term', '')
