@@ -1,7 +1,7 @@
 beautifulsoup4==4.6.3
 certifi==2018.11.29
 chardet==3.0.4
-Django==2.1.4
+Django==2.1.11
 django-jchart==0.4.2
 djangorestframework==3.9.0
 gunicorn==19.9.0
